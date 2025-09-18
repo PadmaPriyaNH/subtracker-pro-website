@@ -56,11 +56,14 @@ const customFeaturePage = document.getElementById('customFeaturePage');
 // Show Login Page
 function showLoginPage() {
     welcomePage.classList.add('hidden');
+    signupPage.classList.add('hidden');
     loginPage.classList.remove('hidden');
 }
 
 // Show Signup Page
 function showSignupPage() {
+    // Ensure welcome screen is hidden when navigating to signup
+    welcomePage.classList.add('hidden');
     loginPage.classList.add('hidden');
     signupPage.classList.remove('hidden');
 }
@@ -1726,3 +1729,118 @@ function loadGlobalThemePreference() {
 
 // Initialize feature modules for Export, Payment History, Share Reports, and Custom Categories
 if (typeof initializeFeatureModules === 'function') { try { initializeFeatureModules(); } catch (e) { console.warn('initializeFeatureModules error:', e); } }
+
+// Expose functions to global scope so inline onclick handlers in index.html work with module scripts
+(function exposeGlobals(){
+    try {
+        const pairs = [
+            // Navigation and auth
+            ['showLoginPage', showLoginPage],
+            ['showSignupPage', showSignupPage],
+            ['showDashboard', showDashboard],
+            ['logout', logout],
+
+            // Modals and notifications
+            ['hideSubscriptionModal', hideSubscriptionModal],
+            ['showAddSubscriptionModal', showAddSubscriptionModal],
+            ['showEditSubscriptionModal', showEditSubscriptionModal],
+            ['closeNotification', closeNotification],
+            ['showNotification', showNotification],
+
+            // Feature pages
+            ['showFeaturePage', showFeaturePage],
+            ['hideFeaturePage', hideFeaturePage],
+            ['exportFeatureData', exportFeatureData],
+
+            // Payment history
+            ['showPaymentHistory', showPaymentHistory],
+            ['hidePaymentHistoryModal', hidePaymentHistoryModal],
+
+            // Dashboard + lists
+            ['updateDashboard', updateDashboard],
+            ['renderSubscriptions', renderSubscriptions],
+            ['deleteSubscription', deleteSubscription],
+            ['checkUpcomingRenewals', checkUpcomingRenewals],
+            ['checkAllReminders', checkAllReminders],
+            ['switchChartView', switchChartView],
+            ['startNotificationChecker', startNotificationChecker],
+
+            // Calendar
+            ['renderCalendar', renderCalendar],
+            ['getRenewalsForDate', getRenewalsForDate],
+            ['changeCalendarMonth', changeCalendarMonth],
+            ['showSubscriptionDetails', showSubscriptionDetails],
+
+            // Filters
+            ['setupFilterListeners', setupFilterListeners],
+            ['applyFilters', applyFilters],
+            ['clearAllFilters', clearAllFilters],
+
+            // Import/Export/Backup
+            ['showImportModal', showImportModal],
+            ['hideImportModal', hideImportModal],
+            ['processImport', processImport],
+            ['showExportModal', showExportModal],
+            ['exportData', exportData],
+            ['exportSubscriptionsToCSV', exportSubscriptionsToCSV],
+            ['exportSubscriptionsToPDF', exportSubscriptionsToPDF],
+            ['createBackup', createBackup],
+            ['exportBackup', exportBackup],
+            ['showSyncOptions', showSyncOptions],
+
+            // Share
+            ['showShareModal', showShareModal],
+            ['hideShareModal', hideShareModal],
+            ['shareReport', shareReport],
+            ['shareViaEmail', shareViaEmail],
+            ['generateShareLink', generateShareLink],
+            ['copyShareLink', copyShareLink],
+            ['printReport', printReport],
+
+            // Budget
+            ['showBudgetModal', showBudgetModal],
+            ['hideBudgetModal', hideBudgetModal],
+            ['loadBudgets', loadBudgets],
+            ['saveBudgets', saveBudgets],
+            ['updateBudgetDisplay', updateBudgetDisplay],
+            ['checkBudgetAlerts', checkBudgetAlerts],
+
+            // Payment methods
+            ['showPaymentMethodModal', showPaymentMethodModal],
+            ['hidePaymentMethodModal', hidePaymentMethodModal],
+            ['loadPaymentMethods', loadPaymentMethods],
+            ['savePaymentMethods', savePaymentMethods],
+            ['renderPaymentMethods', renderPaymentMethods],
+            ['editPaymentMethod', editPaymentMethod],
+            ['deletePaymentMethod', deletePaymentMethod],
+
+            // Categories
+            ['getCategoryColor', getCategoryColor],
+            ['loadCustomCategories', loadCustomCategories],
+            ['saveCustomCategories', saveCustomCategories],
+            ['updateCategorySelectOptions', updateCategorySelectOptions],
+            ['renderCustomCategoriesList', renderCustomCategoriesList],
+            ['deleteCustomCategory', deleteCustomCategory],
+            ['showCategoryModal', showCategoryModal],
+            ['manageCategories', manageCategories],
+            ['hideCategoryModal', hideCategoryModal],
+
+            // Utilities
+            ['getSubscriptionsForExport', getSubscriptionsForExport],
+            ['buildReportHtml', buildReportHtml],
+            ['escapeHtml', escapeHtml],
+            ['loadGlobalThemePreference', loadGlobalThemePreference],
+            ['toggleTheme', toggleTheme],
+            ['applyTheme', applyTheme],
+            ['loadUserPreferences', loadUserPreferences],
+            ['initEnhancedFeatures', initEnhancedFeatures],
+        ];
+        pairs.forEach(([name, fn]) => { try { window[name] = fn; } catch(_){} });
+
+        // Bridge key state so other modules and inline handlers can access them
+        Object.defineProperty(window, 'currentUser', { get: () => currentUser, set: (v) => { currentUser = v; } });
+        Object.defineProperty(window, 'subscriptions', { get: () => subscriptions, set: (v) => { subscriptions = Array.isArray(v) ? v : []; } });
+    } catch (e) {
+        console.warn('Failed to expose globals:', e);
+    }
+})();
