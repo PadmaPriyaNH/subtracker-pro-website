@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="N H Padma Priya">
+    <meta name="owner" content="N H Padma Priya">
+    <meta name="copyright" content="© 2025 N H Padma Priya">
+    <title>SubTracker Pro - Subscription Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Welcome Page -->
+    <div id="welcomePage" class="welcome-page">
+        <div class="logo-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+        </div>
+        <h1 class="app-title">SubTracker<span>Pro</span></h1>
+        <p class="app-subtitle">The ultimate solution for tracking and managing all your subscriptions with intelligent reminders</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <h3 class="feature-title">Easy Tracking</h3>
+                <p class="feature-desc">Add and manage all your subscriptions with detailed information including start dates, renewal dates, and payment frequencies.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3 class="feature-title">Smart Reminders</h3>
+                <p class="feature-desc">Get notified 3 days before your subscriptions renew so you never miss a payment or forget to cancel.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Cost Analysis</h3>
+                <p class="feature-desc">Track your monthly spending and identify which subscriptions are worth keeping with detailed analytics.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="feature-title">Advanced Search</h3>
+                <p class="feature-desc">Quickly find your subscriptions with powerful search and filtering capabilities.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Secure Storage</h3>
+                <p class="feature-desc">Your subscription data is securely stored and never shared with third parties.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="feature-title">Mobile Friendly</h3>
+                <p class="feature-desc">Access your subscriptions from any device with our responsive design.</p>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" onclick="showLoginPage()">
+            <i class="fas fa-rocket"></i>
+            Get Started
+        </button>
+        
+        </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="auth-page hidden">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <div class="auth-logo-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <h2 class="auth-title">Welcome Back</h2>
+                <p class="auth-subtitle">Sign in to your account to manage your subscriptions</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" id="loginEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span id="loginButtonText">Sign In</span>
+                </button>
+            </form>
+            <div class="form-footer">
+                <p>Don't have an account? <a href="#" onclick="showSignupPage()">Sign up now</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Page -->
+    <div id="signupPage" class="auth-page hidden">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <div class="auth-logo-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                </div>
+                <h2 class="auth-title">Create Account</h2>
+                <p class="auth-subtitle">Join SubTracker Pro today and take control of your subscriptions</p>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" id="signupEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" id="signupUsername" required placeholder="Choose a username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" id="signupPassword" required placeholder="Create a strong password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span id="signupButtonText">Create Account</span>
+                </button>
+            </form>
+            <div class="form-footer">
+                <p>Already have an account? <a href="#" onclick="showLoginPage()">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+        <div class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-logo">
+                        <div class="header-logo-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h1 class="header-title">SubTracker<span>Pro</span></h1>
+                    </div>
+                    <div class="user-info">
+                        <div class="notification-icon" id="notificationBell" onclick="checkAllReminders()">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationBadge">0</span>
+                        </div>
+                        <span class="user-name" id="userName">User</span>
+                        <button class="logout-btn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Data Actions (Import/Export) -->
+            <div class="data-actions">
+                <button class="data-action-btn import-btn" onclick="showImportModal()">
+                    <i class="fas fa-file-import"></i>
+                    Import Data
+                </button>
+                <button class="data-action-btn export-btn" onclick="showFeaturePage('export')">
+                    <i class="fas fa-file-export"></i>
+                    Export Data
+                </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-blue">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Subscriptions</h3>
+                        <p id="totalSubscriptions">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-green">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Monthly Cost</h3>
+                        <p id="monthlyCost">₹0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-purple">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Upcoming Renewals</h3>
+                        <p id="upcomingRenewals">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon stat-icon-orange">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Categories</h3>
+                        <p id="categoryCount">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Spending by Category</h3>
+                        <div class="chart-actions">
+                            <button class="chart-action-btn active" id="monthlyBtn">Monthly</button>
+                            <button class="chart-action-btn" id="yearlyBtn">Yearly</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="pie-chart-container">
+                            <canvas id="categoryChart" width="250" height="250"></canvas>
+                            <div class="pie-center" id="chartCenter">₹0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Category Breakdown</h3>
+                    </div>
+                    <div class="category-breakdown" id="categoryBreakdown">
+                        <div class="category-item">
+                            <div class="category-info">
+                                <div class="category-color" style="background: #3b82f6;"></div>
+                                <span class="category-name">Entertainment</span>
+                            </div>
+                            <span class="category-amount">₹0</span>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-info">
+                                <div class="category-color" style="background: #22c55e;"></div>
+                                <span class="category-name">Productivity</span>
+                            </div>
+                            <span class="category-amount">₹0</span>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-info">
+                                <div class="category-color" style="background: #a855f7;"></div>
+                                <span class="category-name">Education</span>
+                            </div>
+                            <span class="category-amount">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Section -->
+            <div class="budget-section">
+                <div class="budget-header">
+                    <h2 class="budget-title">Budget Tracking</h2>
+                    <button class="add-btn" onclick="showBudgetModal()">
+                        <i class="fas fa-plus"></i>
+                        Set Budget
+                    </button>
+                </div>
+                
+                <div class="budget-content">
+                    <div class="budget-progress">
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Entertainment</span>
+                                <span class="progress-value" id="entertainmentProgress">₹0/₹0</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-safe" id="entertainmentFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Productivity</span>
+                                <span class="progress-value" id="productivityProgress">₹0/₹0</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-safe" id="productivityFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-label">Utilities</span>
+                                <span class="progress-value" id="utilitiesProgress">₹0/₹0</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-safe" id="utilitiesFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-stats">
+                        <div class="budget-stat">
+                            <span class="budget-stat-label">Total Monthly Budget</span>
+                            <span class="budget-stat-value" id="totalBudget">₹0</span>
+                        </div>
+                        
+                        <div class="budget-stat">
+                            <span class="budget-stat-label">Current Spending</span>
+                            <span class="budget-stat-value" id="currentSpending">₹0</span>
+                        </div>
+                        
+                        <div class="budget-stat">
+                            <span class="budget-stat-label">Remaining Budget</span>
+                            <span class="budget-stat-value" id="remainingBudget">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Methods Section -->
+            <div class="subscriptions-card">
+                <div class="card-header">
+                    <h2 class="card-title">Payment Methods</h2>
+                    <button class="add-btn" onclick="showPaymentMethodModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Payment Method
+                    </button>
+                </div>
+                
+                <div class="payment-methods" id="paymentMethodsList">
+                    <!-- Payment methods will be added here dynamically -->
+                </div>
+            </div>
+            
+            <!-- Enhanced Filter Panel -->
+            <div class="filter-panel">
+                <div class="filter-panel-header">
+                    <h3 class="filter-panel-title">Advanced Filters</h3>
+                    <button class="chart-action-btn" onclick="clearAllFilters()">
+                        <i class="fas fa-times"></i>
+                        Clear All
+                    </button>
+                </div>
+                
+                <div class="filter-panel-content">
+                    <div class="filter-group">
+                        <label class="filter-group-label">Price Range</label>
+                        <div class="filter-group-options">
+                            <span class="filter-option" data-filter="price" data-value="0-500">Under ₹500</span>
+                            <span class="filter-option" data-filter="price" data-value="500-1000">₹500-₹1000</span>
+                            <span class="filter-option" data-filter="price" data-value="1000+">Over ₹1000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-group-label">Renewal Status</label>
+                        <div class="filter-group-options">
+                            <span class="filter-option" data-filter="renewal" data-value="7">Within 7 days</span>
+                            <span class="filter-option" data-filter="renewal" data-value="30">Within 30 days</span>
+                            <span class="filter-option" data-filter="renewal" data-value="expired">Expired</span>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-group-label">Payment Frequency</label>
+                        <div class="filter-group-options">
+                            <span class="filter-option" data-filter="frequency" data-value="monthly">Monthly</span>
+                            <span class="filter-option" data-filter="frequency" data-value="yearly">Yearly</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter-bar">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search subscriptions...">
+                </div>
+                <select class="filter-select" id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Productivity">Productivity</option>
+                    <option value="Education">Education</option>
+                    <option value="Health">Health</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Other">Other</option>
+                </select>
+                <select class="filter-select" id="sortFilter">
+                    <option value="name">Sort by Name</option>
+                    <option value="renewal">Sort by Renewal Date</option>
+                    <option value="cost">Sort by Cost</option>
+                </select>
+            </div>
+
+            <!-- Subscriptions -->
+            <div class="subscriptions-card">
+                <div class="card-header">
+                    <h2 class="card-title">Your Subscriptions</h2>
+                    <button class="add-btn" onclick="showAddSubscriptionModal()">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Subscription</span>
+                    </button>
+                </div>
+
+                <div id="noSubscriptions" class="no-subscriptions">
+                    <div class="no-subscriptions-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3>No subscriptions added yet</h3>
+                    <p>Start tracking your subscriptions by adding your first one</p>
+                    <button class="btn btn-primary" onclick="showAddSubscriptionModal()">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Add Your First Subscription</span>
+                    </button>
+                </div>
+
+                <div id="subscriptionsTable" class="table-container hidden">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subscription</th>
+                                <th>Cost</th>
+                                <th>Dates</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscriptionsList">
+                            <!-- Subscriptions will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Calendar View -->
+            <div class="calendar-view">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn" onclick="changeCalendarMonth(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3 class="calendar-title" id="calendarTitle">January 2023</h3>
+                        <button class="calendar-nav-btn" onclick="changeCalendarMonth(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <button class="add-btn" onclick="showAddSubscriptionModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Subscription
+                    </button>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar will be generated here dynamically -->
+                </div>
+            </div>
+            
+            <!-- Backup Options -->
+            <div class="subscriptions-card">
+                <div class="card-header">
+                    <h2 class="card-title">Backup & Sync</h2>
+                </div>
+                
+                <div class="backup-options">
+                    <div class="backup-option" onclick="createBackup()">
+                        <div class="backup-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3 class="backup-option-name">Cloud Backup</h3>
+                        <p class="backup-option-desc">Save your data to the cloud and access it from any device</p>
+                    </div>
+                    
+                    <div class="backup-option" onclick="exportBackup()">
+                        <div class="backup-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3 class="backup-option-name">Local Backup</h3>
+                        <p class="backup-option-desc">Download a backup file to your device for safekeeping</p>
+                    </div>
+                    
+                    <div class="backup-option" onclick="showSyncOptions()">
+                        <div class="backup-icon">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <h3 class="backup-option-name">Auto Sync</h3>
+                        <p class="backup-option-desc">Automatically sync your data across all your devices</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Features -->
+            <div class="additional-features">
+                <h2>Other Features</h2>
+                <div class="features-grid-2">
+                    <div class="feature-card-2" onclick="showFeaturePage('export')">
+                        <div class="feature-icon-2">
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </div>
+                        <h3 class="feature-title-2">Export Data</h3>
+                        <p class="feature-desc-2">Export your subscription data to CSV or PDF for record keeping</p>
+                    </div>
+                    <div class="feature-card-2" onclick="showFeaturePage('payment')">
+                        <div class="feature-icon-2">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3 class="feature-title-2">Payment History</h3>
+                        <p class="feature-desc-2">Track payment history and view past transactions</p>
+                    </div>
+                    <div class="feature-card-2" onclick="showFeaturePage('share')">
+                        <div class="feature-icon-2">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3 class="feature-title-2">Share Reports</h3>
+                        <p class="feature-desc-2">Share spending reports with family or team members</p>
+                    </div>
+                    <div class="feature-card-2" onclick="showFeaturePage('custom')">
+                        <div class="feature-icon-2">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3 class="feature-title-2">Custom Categories</h3>
+                        <p class="feature-desc-2">Create custom categories for better organization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Data Feature Page -->
+    <div id="exportFeaturePage" class="feature-page hidden">
+        <div class="feature-header">
+            <div class="container">
+                <div class="feature-header-content">
+                    <h1 class="header-title">SubTracker<span>Pro</span></h1>
+                    <button class="back-btn" onclick="hideFeaturePage()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Dashboard</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-icon-large">
+                    <i class="fas fa-cloud-download-alt"></i>
+                </div>
+                <h1>Export Data</h1>
+                <div class="data-actions" style="justify-content:center;">
+                    <button class="data-action-btn export-btn" onclick="exportData('csv')">
+                        <i class="fas fa-file-csv"></i> Export CSV
+                    </button>
+                    <button class="data-action-btn export-btn" onclick="exportData('pdf')">
+                        <i class="fas fa-file-pdf"></i> Export PDF
+                    </button>
+                </div>
+                <p>SubTracker Pro allows you to export your subscription data in multiple formats for easy record keeping and analysis.</p>
+                
+                <h2>Export Options</h2>
+                <ul>
+                    <li><strong>CSV Export:</strong> Export all your subscription data to a CSV file that can be opened in Excel or Google Sheets</li>
+                    <li><strong>PDF Report:</strong> Generate a professional PDF report with charts and summaries</li>
+                    <li><strong>JSON Data:</strong> Export raw data in JSON format for developers or advanced users</li>
+                </ul>
+                
+                <h2>How to Export</h2>
+                <ol>
+                    <li>Navigate to the dashboard</li>
+                    <li>Click on the "Export" button in the top navigation</li>
+                    <li>Choose your preferred export format</li>
+                    <li>Select the date range and categories to include</li>
+                    <li>Click "Export" and save the file to your device</li>
+                </ol>
+                
+                <h2>Benefits</h2>
+                <ul>
+                    <li>Keep offline backups of your subscription data</li>
+                    <li>Share reports with accountants or financial advisors</li>
+                    <li>Analyze spending patterns over time</li>
+                    <li>Import data into other financial management tools</li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="exportFeatureData('csv')">
+                        <i class="fas fa-file-csv"></i>
+                        <span>Export as CSV</span>
+                    </button>
+                    <button class="btn btn-primary" style="margin-left: 20px;" onclick="exportFeatureData('pdf')">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Export as PDF</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment History Feature Page -->
+    <div id="paymentFeaturePage" class="feature-page hidden">
+        <div class="feature-header">
+            <div class="container">
+                <div class="feature-header-content">
+                    <h1 class="header-title">SubTracker<span>Pro</span></h1>
+                    <button class="back-btn" onclick="hideFeaturePage()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Dashboard</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-icon-large">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h1>Payment History</h1>
+                <p>Track all your subscription payments and view detailed transaction history to better understand your spending patterns.</p>
+                
+                <h2>Payment Tracking Features</h2>
+                <ul>
+                    <li><strong>Automatic Payment Logging:</strong> Payments are automatically recorded when you add or update subscriptions</li>
+                    <li><strong>Manual Payment Entry:</strong> Add manual payments for subscriptions paid outside the app</li>
+                    <li><strong>Payment Status:</strong> Track whether payments are pending, completed, or failed</li>
+                    <li><strong>Payment Method Tracking:</strong> Record which payment method was used for each transaction</li>
+                </ul>
+                
+                <h2>Viewing Payment History</h2>
+                <p>Access your payment history through the dashboard:</p>
+                <ul>
+                    <li>Click on any subscription to view its payment history</li>
+                    <li>Filter payments by date range, amount, or payment method</li>
+                    <li>Sort payments by date, amount, or status</li>
+                    <li>View detailed transaction information including reference numbers</li>
+                </ul>
+                
+                <h2>Payment Analytics</h2>
+                <ul>
+                    <li><strong>Monthly Spending:</strong> See how much you spend on subscriptions each month</li>
+                    <li><strong>Payment Trends:</strong> Identify patterns in your payment behavior</li>
+                    <li><strong>Budget Tracking:</strong> Compare actual spending against your budget</li>
+                    <li><strong>Payment Reminders:</strong> Get notified before upcoming payments</li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="showPaymentHistory()">
+                        <i class="fas fa-history"></i>
+                        <span>View Payment History</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Reports Feature Page -->
+    <div id="shareFeaturePage" class="feature-page hidden">
+        <div class="feature-header">
+            <div class="container">
+                <div class="feature-header-content">
+                    <h1 class="header-title">SubTracker<span>Pro</span></h1>
+                    <button class="back-btn" onclick="hideFeaturePage()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Dashboard</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-icon-large">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h1>Share Reports</h1>
+                <p>Easily share your subscription spending reports with family members, roommates, or colleagues to improve financial transparency.</p>
+                
+                <h2>Sharing Options</h2>
+                <ul>
+                    <li><strong>Email Reports:</strong> Send detailed reports directly to email addresses</li>
+                    <li><strong>Share Links:</strong> Generate secure links that can be shared with anyone</li>
+                    <li><strong>Export and Share:</strong> Export reports and share files through your preferred method</li>
+                    <li><strong>Scheduled Sharing:</strong> Automatically send reports on a regular schedule</li>
+                </ul>
+                
+                <h2>Customizable Reports</h2>
+                <p>Create personalized reports for different recipients:</p>
+                <ul>
+                    <li>Select specific categories or subscriptions to include</li>
+                    <li>Choose date ranges for the report period</li>
+                    <li>Add custom notes or messages to reports</li>
+                    <li>Customize the appearance and format of reports</li>
+                </ul>
+                
+                <h2>Privacy Controls</h2>
+                <ul>
+                    <li><strong>Selective Sharing:</strong> Choose exactly what information to share</li>
+                    <li><strong>Password Protection:</strong> Add password protection to shared reports</li>
+                    <li><strong>Expiration Dates:</strong> Set expiration dates for shared links</li>
+                    <li><strong>Access Tracking:</strong> See who has viewed your shared reports</li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="shareReport()">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share Current Report</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Categories Feature Page -->
+    <div id="customFeaturePage" class="feature-page hidden">
+        <div class="feature-header">
+            <div class="container">
+                <div class="feature-header-content">
+                    <h1 class="header-title">SubTracker<span>Pro</span></h1>
+                    <button class="back-btn" onclick="hideFeaturePage()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Dashboard</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="feature-content">
+                <div class="feature-icon-large">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h1>Custom Categories</h1>
+                <p>Create and manage custom categories to better organize your subscriptions according to your personal needs and preferences.</p>
+                
+                <h2>Category Management</h2>
+                <ul>
+                    <li><strong>Create New Categories:</strong> Add unlimited custom categories for your subscriptions</li>
+                    <li><strong>Edit Existing Categories:</strong> Modify category names, colors, and descriptions</li>
+                    <li><strong>Delete Categories:</strong> Remove categories you no longer need (subscriptions will be reassigned)</li>
+                    <li><strong>Category Colors:</strong> Assign custom colors to each category for better visual organization</li>
+                </ul>
+                
+                <h2>Advanced Features</h2>
+                <ul>
+                    <li><strong>Category Budgets:</strong> Set monthly budgets for each category</li>
+                    <li><strong>Category Tags:</strong> Add tags for more detailed filtering and searching</li>
+                    <li><strong>Category Hierarchy:</strong> Create subcategories for more detailed organization</li>
+                    <li><strong>Bulk Assignment:</strong> Assign multiple subscriptions to categories at once</li>
+                </ul>
+                
+                <h2>How to Manage Categories</h2>
+                <ol>
+                    <li>Go to Settings > Categories</li>
+                    <li>Click "Add New Category" to create a custom category</li>
+                    <li>Enter category name, choose a color, and add description</li>
+                    <li>Assign subscriptions to your new category</li>
+                    <li>Use your custom categories in reports and filters</li>
+                </ol>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-primary" onclick="manageCategories()">
+                        <i class="fas fa-cog"></i>
+                        <span>Manage Categories</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Subscription Modal -->
+    <div id="subscriptionModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Add New Subscription</h3>
+                <button class="close-btn" onclick="hideSubscriptionModal()">&times;</button>
+            </div>
+            <form id="subscriptionForm">
+                <div class="modal-body">
+                    <input type="hidden" id="subscriptionId">
+                    <div class="form-group">
+                        <label class="form-label">Subscription Name *</label>
+                        <input type="text" class="form-input" id="subscriptionName" required placeholder="e.g., Netflix Premium">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Company/Service</label>
+                        <input type="text" class="form-input" id="companyName" placeholder="e.g., Netflix Inc.">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Price *</label>
+                            <input type="number" class="form-input" id="subscriptionPrice" required step="0.01" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Currency</label>
+                            <select class="form-input" id="currency">
+                                <option value="₹">₹ (INR)</option>
+                                <option value="$">$ (USD)</option>
+                                <option value="€">€ (EUR)</option>
+                                <option value="£">£ (GBP)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Payment Frequency</label>
+                            <select class="form-input" id="paymentFrequency">
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select class="form-input" id="category">
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Productivity">Productivity</option>
+                                <option value="Education">Education</option>
+                                <option value="Health">Health</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-input" id="startDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Renewal Date *</label>
+                            <input type="date" class="form-input" id="renewalDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-input" id="notes" rows="3" placeholder="Additional details about this subscription..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="hideSubscriptionModal()">
+                        <i class="fas fa-times"></i>
+                        <span>Cancel</span>
+                    </button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-save"></i>
+                        <span id="submitButtonText">Add Subscription</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-header">
+            <div class="notification-title">
+                <i class="fas fa-bell"></i>
+                <span>Subscription Reminder</span>
+            </div>
+            <button class="notification-close" onclick="closeNotification()">&times;</button>
+        </div>
+        <div class="notification-content" id="notificationContent">
+            Your subscription is about to renew!
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div id="importModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Import Data</h3>
+                <button class="close-btn" onclick="hideImportModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Select File</label>
+                    <input type="file" class="form-input" id="importFile" accept=".json,.csv">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Import Options</label>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="radio" name="importOption" value="replace" checked>
+                            <span>Replace all current data</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="radio" name="importOption" value="merge">
+                            <span>Merge with existing data</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="hideImportModal()">
+                    <i class="fas fa-times"></i>
+                    <span>Cancel</span>
+                </button>
+                <button type="button" class="btn-submit" onclick="processImport()">
+                    <i class="fas fa-file-import"></i>
+                    <span>Import Data</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Budget Modal -->
+    <div id="budgetModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Set Budget Limits</h3>
+                <button class="close-btn" onclick="hideBudgetModal()">&times;</button>
+            </div>
+            <form id="budgetForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Entertainment (₹)</label>
+                        <input type="number" class="form-input" id="entertainmentBudget" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Productivity (₹)</label>
+                        <input type="number" class="form-input" id="productivityBudget" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Education (₹)</label>
+                        <input type="number" class="form-input" id="educationBudget" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Health (₹)</label>
+                        <input type="number" class="form-input" id="healthBudget" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Utilities (₹)</label>
+                        <input type="number" class="form-input" id="utilitiesBudget" step="0.01" placeholder="0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Other (₹)</label>
+                        <input type="number" class="form-input" id="otherBudget" step="0.01" placeholder="0.00">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="hideBudgetModal()">
+                        <i class="fas fa-times"></i>
+                        <span>Cancel</span>
+                    </button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-save"></i>
+                        <span>Save Budget</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Payment Method Modal -->
+    <div id="paymentMethodModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Add Payment Method</h3>
+                <button class="close-btn" onclick="hidePaymentMethodModal()">&times;</button>
+            </div>
+            <form id="paymentMethodForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Payment Type</label>
+                        <select class="form-input" id="paymentType">
+                            <option value="creditCard">Credit Card</option>
+                            <option value="debitCard">Debit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="bankTransfer">Bank Transfer</option>
+                            <option value="upi">UPI</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" id="paymentName" placeholder="e.g., My Visa Card">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Last 4 Digits</label>
+                        <input type="text" class="form-input" id="paymentLastFour" placeholder="e.g., 1234" maxlength="4">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Expiry Date</label>
+                        <input type="month" class="form-input" id="paymentExpiry">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="hidePaymentMethodModal()">
+                        <i class="fas fa-times"></i>
+                        <span>Cancel</span>
+                    </button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-save"></i>
+                        <span>Add Payment Method</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Share Subscription Data</h3>
+                <button class="close-btn" onclick="hideShareModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <div class="share-option" onclick="shareViaEmail()">
+                        <div class="share-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="share-option-name">Email</h3>
+                        <p class="share-option-desc">Send subscription data via email</p>
+                    </div>
+                    
+                    <div class="share-option" onclick="generateShareLink()">
+                        <div class="share-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3 class="share-option-name">Shareable Link</h3>
+                        <p class="share-option-desc">Create a link to share your data</p>
+                    </div>
+                    
+                    <div class="share-option" onclick="printReport()">
+                        <div class="share-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <h3 class="share-option-name">Print Report</h3>
+                        <p class="share-option-desc">Generate a printable report</p>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="shareLinkContainer" style="display: none;">
+                    <label class="form-label">Shareable Link</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" class="form-input" id="shareLinkInput" readonly>
+                        <button type="button" class="btn-secondary" onclick="copyShareLink()">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="hideShareModal()">
+                    <i class="fas fa-times"></i>
+                    <span>Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment History Modal -->
+    <div id="paymentHistoryModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Payment History</h3>
+                <button class="close-btn" onclick="hidePaymentHistoryModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Show last (months)</label>
+                    <select class="form-input" id="paymentHistoryRange">
+                        <option value="3">3</option>
+                        <option value="6" selected>6</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                    </select>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Subscription</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentHistoryList">
+                            <tr>
+                                <td colspan="4" style="text-align:center; padding: 20px; color: #64748b;">
+                                    No payments found for the selected range.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="hidePaymentHistoryModal()">
+                    <i class="fas fa-times"></i>
+                    <span>Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Management Modal -->
+    <div id="categoryModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Manage Categories</h3>
+                <button class="close-btn" onclick="hideCategoryModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="categoryForm">
+                    <div class="form-row">
+                        <div class="form-group" style="flex:2;">
+                            <label class="form-label">Category Name</label>
+                            <input type="text" class="form-input" id="categoryNameInput" placeholder="e.g., Travel" required>
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label class="form-label">Color</label>
+                            <input type="color" class="form-input" id="categoryColorInput" value="#64748b" style="height: 40px; padding: 2px;">
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding: 0; justify-content: flex-start;">
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Category</span>
+                        </button>
+                    </div>
+                </form>
+                <div style="margin-top: 16px;">
+                    <h4 style="margin-bottom:8px;">Your Custom Categories</h4>
+                    <div id="customCategoriesList"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="hideCategoryModal()">
+                    <i class="fas fa-times"></i>
+                    <span>Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Made with ❤️ by N H Padma Priya</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
